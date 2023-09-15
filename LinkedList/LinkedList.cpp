@@ -5,9 +5,9 @@ public:
     int data;
     Node* next;
 
-    Node(int value) {
+    Node(int value = 0, Node* nextNode = nullptr) {
         data = value;
-        next = nullptr;
+        next = nextNode;
     }
 };
 
@@ -15,8 +15,8 @@ class LinkedList {
 public:
     Node* head;
 
-    LinkedList() {
-        head = nullptr;
+    LinkedList(Node* node = nullptr) {
+        head = node;
     }
 
     void append(int value) {

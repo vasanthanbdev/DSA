@@ -1,12 +1,12 @@
 class ListNode:
-    def __init__(self, val) -> None:
+    def __init__(self, val: int = 0, next = None) -> None:
         self.val = val
-        self.next = None
+        self.next = next
         
 
 class LinkedList:
-    def __init__(self) -> None:
-        self.head = None
+    def __init__(self, head = None) -> None:
+        self.head = head
         
     def ListAppend(self, val) -> None:
         node = ListNode(val)
