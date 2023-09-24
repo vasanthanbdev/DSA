@@ -31,7 +31,7 @@ class LinkedList:
     def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
         curr = head
         prev = None
-        while (curr):
+        while curr:
             temp = curr.next
             curr.next = prev 
             prev = curr

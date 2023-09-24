@@ -12,11 +12,11 @@ class LinkedList:
         node = ListNode(val)
         if not self.head:
             self.head = node
-            return
-        current = self.head
-        while current.next:
-            current = current.next
-        current.next = node
+        else:
+            current = self.head
+            while current.next:
+                current = current.next
+            current.next = node
         return
     
     def ListDisplay(self) -> None:

@@ -4,7 +4,6 @@ class ListNode:
     def __init__(self, val) -> None:
         self.val = val
         self.next = None
-        
 
 class LinkedList:
     def __init__(self) -> None:
@@ -48,6 +47,31 @@ class LinkedList:
                 return
             current = current.next 
         return
+    
+    # utility function to create cycle
+    # def createCycle(head, a, b):
+        # cnta = 0
+        # cntb = 0
+        # p1 = head
+        # p2 = head
+        # while cnta != a or cntb != b:
+        #     if cnta != a:
+        #         p1 = p1.next
+        #         cnta += 1
+        #     if cntb != b:
+        #         p2 = p2.next
+        #         cntb += 1
+        # p2.next = p1
+    def createCycle(self, pos: int):
+        temp = self.head
+        ptr = self.head
+        cnt = 0
+        while temp.next != None:
+            if cnt != pos:
+                ptr = ptr.next
+                cnt += 1
+            temp = temp.next
+        temp.next = ptr
         
     def hasCycle(self, head: Optional[ListNode]) -> bool:
         if not (head or head.next):
@@ -70,5 +94,5 @@ if __name__ == "__main__":
     for val in listvals:
         my_linked_list.ListAppend(val)
     my_linked_list.ListDisplay()
+    my_linked_list.createCycle(1)
     my_linked_list.hasCycle(my_linked_list.head)
-       
