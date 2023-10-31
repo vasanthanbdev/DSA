@@ -1,4 +1,3 @@
-from collections import deque 
 
 def isValid(s: str) -> bool:
     stack = []
