@@ -1,0 +1,12 @@
+{
+    "files.associations": {
+        "**/*.html": "html",
+        "**/templates/**/*.html": "html",
+        "**/templates/**/*": "django-txt",
+        "**/requirements{/**,*}.{txt,in}": "pip-requirements",
+        "*.html": "html",
+        "cstddef": "cpp",
+        "chrono": "cpp",
+        "functional": "cpp"
+    }
+}
