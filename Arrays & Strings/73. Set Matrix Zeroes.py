@@ -49,12 +49,15 @@ if __name__ == "__main__":
     solution = Solution()
 
     # Example input matrix
-    matrix = [
-        [1, 2, 3],
-        [4, 0, 6],
-        [7, 8, 9]
-    ]
+    size = 3
+    matrix = [[0 for _ in range(size)] for _ in range(size)]
 
+    x = 1
+    for i in range(size):
+        for j in range(size):
+            matrix[i][j] = x
+            x += 1
+    
     # Call the setZeroes method on the input matrix
     solution.setZeroes(matrix)
 
