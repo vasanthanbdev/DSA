@@ -2,23 +2,59 @@
 using namespace std;
 
 
+// Optimized Solution T: O(1) at best case and O(n) at worst
 class Solution {
-public:
-    vector<int> plusOne(vector<int>& digits) {
-        for(int i = digits.size() - 1; i >= 0; i--) {
-            if (digits[i] < 9) {
-                digits[i]++;
-                return digits;
-            }
-            digits[i] = 0;
-        }
-
-        // If all digits are 9, add extra 1 at beginning
-        vector<int> res(digits.size() + 1, 0);
-        res[0] = 1;
-        return res;
+ public:
+  vector<int> plusOne(vector<int>& digits) {
+    for (int i = digits.size() - 1; i >= 0; --i) {
+      if (digits[i] < 9) {
+        ++digits[i];
+        return digits;
+      }
+      digits[i] = 0;
     }
+
+    digits.insert(digits.begin(), 1);
+    return digits;
+  }
 };
+
+
+
+/* My solution , T: O(n) at all cases
+std::vector<int> plusOne(std::vector<int>& digits) {
+    int temp = 0, carry = 1;
+    for (int i = digits.size() - 1; i >= 0; i--) {
+        temp = digits[i] + carry;
+        carry = temp / 10;
+        digits[i] = temp % 10;
+    }
+    if (digits[0] == 0) digits.insert(begin(), 1);
+    return digits;
+}
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 int main() {
