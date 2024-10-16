@@ -33,3 +33,4 @@ if __name__ == "__main__":
     nums = [3, 3]
     target = 6
     print(sol.twoSum(nums, target))
+

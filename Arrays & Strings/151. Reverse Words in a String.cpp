@@ -1,27 +1,37 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-
-class Solution {
+class Solution
+{
 public:
-    string reverseWords(string s) {
-        if (s.size() == 0) return s;
+    string reverseWords(string s)
+    {
+        std::stack<std::string> words;
 
-        stack<string> words;
-        string word;
-        stringstream stream(s);
-
-        while (stream >> word) {
-            if (word != "") {
-                words.push(word);
+        std::string word = "";
+        for (int i = 0; i < s.size(); i++)
+        {
+            if (s[i] == ' ')
+            {
+                if (word != "")
+                {
+                    words.push(word);
+                    word = "";
+                }
+            }
+            else
+            {
+                word += s[i];
             }
         }
+        words.push(word);
 
-        string res = "";
-        while (!words.empty()) {
-            res += words.top();        
-            res += ' ';
+        std::string res = "";
+        while (!words.empty())
+        {
+            res += words.top();
             words.pop();
+            res += ' ';
         }
         res.pop_back();
 
@@ -29,12 +39,9 @@ public:
     }
 };
 
-
-
-
-
-int main() {
-    string s = "  hello world  ";
+int main()
+{
+    string s = "  hello world";
     Solution sol;
     cout << sol.reverseWords(s) << endl;
 

@@ -1,31 +1,31 @@
 #include <iostream>
 
-class Node {
+class ListNode {
 public:
-    int data;
-    Node* next;
+    int value;
+    ListNode* next;
 
-    Node(int value = 0, Node* nextNode = nullptr) {
-        data = value;
-        next = nextNode;
+    ListNode(int value = 0, ListNode* next = nullptr) {
+        this->value = value;
+        this->next = next;
     }
 };
 
 class LinkedList {
 public:
-    Node* head;
+    ListNode* head;
 
-    LinkedList(Node* node = nullptr) {
+    LinkedList(ListNode* node = nullptr) {
         head = node;
     }
 
     void append(int value) {
-        Node* newNode = new Node(value);
+        ListNode* newNode = new ListNode(value);
         if (!head) {
             head = newNode;
             return;
         }
-        Node* current = head;
+        ListNode* current = head;
         while (current->next) {
             current = current->next;
         }
@@ -33,7 +33,7 @@ public:
     }
 
     void prepend(int value) {
-        Node* newNode = new Node(value);
+        ListNode* newNode = new ListNode(value);
         newNode->next = head;
         head = newNode;
     }
@@ -42,16 +42,16 @@ public:
         if (!head) {
             return;
         }
-        if (head->data == value) {
-            Node* temp = head;
+        if (head->value == value) {
+            ListNode* temp = head;
             head = head->next;
             delete temp;
             return;
         }
-        Node* current = head;
+        ListNode* current = head;
         while (current->next) {
-            if (current->next->data == value) {
-                Node* temp = current->next;
+            if (current->next->value == value) {
+                ListNode* temp = current->next;
                 current->next = current->next->next;
                 delete temp;
                 return;
@@ -61,9 +61,9 @@ public:
     }
 
     void display() {
-        Node* current = head;
+        ListNode* current = head;
         while (current) {
-            std::cout << current->data << " -> ";
+            std::cout << current->value << " -> ";
             current = current->next;
         }
         std::cout << "nullptr" << std::endl;
