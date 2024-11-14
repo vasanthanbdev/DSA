@@ -15,20 +15,22 @@ class Solution:
 """
 
 
-""" Set Approach
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
-        charset = set()
-        l = 0
-        res = 0
-        for r in range(len(s)):
-            while s[r] in charset:
+        charset: set = set()
+        l: int = 0
+        r: int = 0
+        length: int = 0
+        while l <= r and r < len(s):
+            if s[r] not in charset:
+                charset.add(s[r])
+                length = max(length, r - l + 1)
+                r += 1
+            else:
                 charset.remove(s[l])
-                l += 1  
-            charset.add(s[r])
-            res = max(res, r - l + 1)
-        return res
-"""
+                l += 1
+        return length
+
     
 if __name__ == "__main__":
     sol = Solution()
