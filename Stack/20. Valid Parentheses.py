@@ -1,16 +1,21 @@
 
-def isValid(s: str) -> bool:
-    stack = []
-    map = {")":"(", "]":"[", "}":"{"}
-    for c in s:
-        if (c in map):
-            if (stack and stack[-1] == map[c]):
-                stack.pop()
-            else:
+
+class Solution:
+    def isValid(self, s: str) -> bool:
+        stack = []
+
+        for c in s:
+            if c == '(':
+                stack.append(')')
+            elif c == '{':
+                stack.append('}')
+            elif c == '[':
+                stack.append(']')
+            elif not stack or stack.pop() != c:
                 return False
-        else:
-            stack.append(c)
-    return True if not stack else False
+
+        return not stack
+
 
 if __name__ == "__main__":
     s = "()[]"

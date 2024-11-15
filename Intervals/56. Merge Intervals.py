@@ -1,29 +1,16 @@
-from typing import List
 
-# class Solution:
-#     def merge(self, intervals: List[List[int]]) -> List[List[int]]:
-#         merged = []
-#         for i in range(len(intervals) - 2):
-#             if intervals[i][1] >= intervals[i+1][0] and intervals[i][1] <= intervals[i+1][1]:
-#                 arr = [intervals[i][0], intervals[i+1][1]]
-#                 merged.append(arr)
-#                 intervals.remove(intervals[i+1])
-#             else:
-#                 merged.append(intervals[i])
-#         merged.append(intervals[len(intervals) - 1])
-#         return merged
 
 class Solution:
-    def merge(self, intervals: List[List[int]]) -> List[List[int]]:
-        intervals.sort(key= lambda i : i[0]) #sorting with the first element of the each intervals
-        merged = [intervals[0]]
-        for start, end in intervals[1:]:
-            recentend = merged[-1][1]
-            if start <= recentend:
-                merged[-1][1] = max(end, recentend) # max is used because if the recentend may be smaller the end like [[1, 5], [2, 4]]
+    def merge(self, intervals: list[list[int]]) -> list[list[int]]:
+        ans = []
+
+        for interval in sorted(intervals):
+            if not ans or ans[-1][1] < interval[0]:
+                ans.append(interval)
             else:
-                merged.append([start, end])
-        return merged
+                ans[-1][1] = max(ans[-1][1], interval[1])
+
+        return ans
             
 if __name__ == "__main__":
     sol = Solution()
